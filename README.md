@@ -1,4 +1,4 @@
-# comp324-LED
+# comp264-voicecontrol
 This project is about Voice Control Using Python.
 The voice control will involve an Email Sender, Tic-Tac-Toe, and Note Taker.
 A problem we are trying to solve is accessibility for everyone. Those who are physically impaired could use the voice controls. 
