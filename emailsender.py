@@ -5,6 +5,9 @@ import smtplib
 from email.mime.text import MIMEText
 
 s = reader.init()
+s.setProperty('rate', 175)
+voices = s.getProperty('voices')
+s.setProperty('voice', voices[1].id)
 r = sr.Recognizer()
 r.energy_threshold = 4000
 conn = mysql.connector.connect(host='localhost', database='email', user='root', password='')
