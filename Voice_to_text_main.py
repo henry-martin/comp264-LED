@@ -33,13 +33,14 @@ while (1):
                 print(NoteText, file=f)
 
             print(NoteText)
+            SpeakText(NoteText)
+
             #sourceFile = open('demo.txt', 'w')
             #print("Did you say " + MyText)
             #sourceFile.close()
-            #SpeakText(MyText)
 
     except sr.RequestError as e:
-        print("Could not request results; {0}".format(e))
+        print("Could not return results; {0}".format(e))
 
     except sr.UnknownValueError:
-        print("unknown error occured")
+        print("problem")
