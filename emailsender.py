@@ -208,7 +208,7 @@ def sendEmail():
 
                         server = smtplib.SMTP("smtp.gmail.com", 587)
                         server.starttls()
-                        server.login("comp264project@gmail.com", "*a)PGaHHk@LCbU&3G3pBf%mnM8_(Uc9)")
+                        server.login("comp264project@gmail.com", "*a)PGaHHk@LCbU&3G3pBf%mnM8_(Uc9)")  # Feel free to hack this account
                         server.send_message(email)
                         server.quit()
 

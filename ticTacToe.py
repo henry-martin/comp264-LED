@@ -5,6 +5,7 @@ import random
 s = reader.init()
 r = sr.Recognizer()
 r.energy_threshold = 2000
+space = None
 
 
 def insertLetter(letter, pos):
@@ -164,27 +165,29 @@ def printSpaces(space):
     print('    |      |')
 
 
-while True:
+def game():
+    global space
 
-    print('TIC TAC TOE (VOICE ONLY EDITION)')
-    # answer = input('Would you like to play? (Y/N)')
-    print('Would you like to play? (say yes or no)')
+    while True:
 
+        print('TIC TAC TOE (VOICE ONLY EDITION)')
+        print('Would you like to play? (say yes or no)')
 
-    with sr.Microphone() as source:
-        audio = r.listen(source)
+        with sr.Microphone() as source:
+            audio = r.listen(source)
 
-        try:
-            answer = r.recognize_google(audio)
+            try:
+                answer = r.recognize_google(audio, language="en-US")
 
-            if answer == 'yes':
-                #inserts spaces for a board
-                space = [' ' for x in range(10)]
-                print('-----------------------------------')
-                main()
-            elif answer == 'I don\'t know':
-                print('make up your mind')
-            elif answer == 'no':
-                break
-        except:
-            print('sorry, I\'m not sure what you said.')
+                if answer == 'yes':
+                    #inserts spaces for a board
+                    space = [' ' for x in range(10)]
+                    print('-----------------------------------')
+                    main()
+                elif answer == 'I don\'t know':
+                    print('make up your mind')
+                elif answer == 'no':
+                    return
+            except:
+                print(answer)
+                print('sorry, I\'m not sure what you said.')

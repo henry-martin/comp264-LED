@@ -1,16 +1,22 @@
-import speech_recognition as sr
-import pyttsx3 as reader
+import Voice_to_text_main
+import emailsender
+import ticTacToe
 
-s = reader.init()
-r = sr.Recognizer()
 
-with sr.Microphone() as source:
-    print("Speak Anything:")
-    audio = r.listen(source)
+def main():
+    while True:
+        emailsender.say("Welcome to your voice assistant;"
+                        "To play tic tac toe, say tic-tac-toe;"
+                        "To take notes, say take notes;"
+                        "To send emails, say email client;"
+                        "To quit, say goodbye")
+        answer = emailsender.transcribe(['tic-tac-toe', 'take notes', 'email client', 'goodbye'])
+        if answer == 'tic-tac-toe': ticTacToe.game()
+        if answer == 'take notes': Voice_to_text_main.Notes()
+        if answer == 'email client': emailsender.emailSenderMain()
+        if answer == 'goodbye':
+            emailsender.say("Goodbye!")
+            quit()
 
-    try:
-        text = r.recognize_google(audio)
-        s.say(text)
-        s.runAndWait()
-    except:
-        print("Sorry couldn't recognize your voice")
+# Run Program
+main()
